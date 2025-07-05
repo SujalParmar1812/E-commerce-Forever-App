@@ -46,6 +46,10 @@ const Navbar = () => {
           <p>CONTACT</p>
           <hr className="w-2/4 border-none h-[2px] bg-gray-700 hidden " />
         </NavLink>
+        {token && <NavLink to="/orders" className="flex flex-col items-center gap-1">
+          <p>ORDERS</p>
+          <hr className="w-2/4 border-none h-[2px] bg-gray-700 hidden " />
+        </NavLink>}
       </ul>
       <div className="flex items-center gap-6">
         <img
@@ -54,29 +58,19 @@ const Navbar = () => {
           alt="search"
           onClick={()=>setShowSearch(!showSearch)}
         />
-        <div className="group relative">
-          {" "}
-          <img  onClick={()=>token?null:navigate('/login')}
-            src={assets.profile_icon}
-            className="w-5 cursor-pointer"
-            alt=""
-          />
-          {/* dropdown menu */}
-
-          {token && <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-              <p className="cursor-pointer hover:text-black border-b-4">My profile</p>
-              <p onClick={()=>navigate('/orders')} className="cursor-pointer hover:text-black border-b-4">Orders</p>
-              <p onClick={()=>logout()} className="cursor-pointer hover:text-black border-b-4">Logout</p>
-            </div>
-          </div>}
-        </div>
         <Link to="/cart" className="relative">
           <img src={assets.cart_icon} className="w-5 min-w-5" alt="" />
           <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 aspect-square rounded-full text-[8px] bg-black text-white">
             {getCartCount()}
           </p>
         </Link>
+        <div className="group relative">
+          {" "}
+          {
+           token && <button onClick={()=>logout()} className="cursor-pointer hover:bg-black py-1 px-2 hover:text-white transition-all duration-300">Logout</button>
+          }
+
+        </div>
         <img
           onClick={() => setVisible(true)}
           src={assets.menu_icon}
@@ -131,6 +125,15 @@ const Navbar = () => {
           >
             CONTACT
           </NavLink>
+          {token &&
+          <NavLink
+            onClick={() => setVisible(false)}
+            className="py-2 pl-6 hover:text-black"
+            to="/order"
+          >
+            ORDERS
+          </NavLink>
+          }       
         </div>
       </div>
     </div>
