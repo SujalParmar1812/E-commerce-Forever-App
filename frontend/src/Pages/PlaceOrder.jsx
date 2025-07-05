@@ -22,7 +22,7 @@ const PlaceOrder = () => {
     phone:'',
   })
   
-  const {navigate,backendUrl,token,cartItem,setCartItem,getCartAmount,delivery_fee,products} = useContext(ShopContext);
+  const {navigate,backendUrl,token,cartItem,setCartItem,getCartAmount,deliveryFee,products} = useContext(ShopContext);
   const onChangeHandler= (event)=>{
     const name = event.target.name;
     const value = event.target.value;
@@ -52,7 +52,7 @@ const PlaceOrder = () => {
       let orderData = {
         address:formData,
         items:orderItems,
-        amount:getCartAmount()+delivery_fee
+        amount:getCartAmount() + deliveryFee
       }
 
       switch (method) {
@@ -65,6 +65,7 @@ const PlaceOrder = () => {
               toast.error(response.data.message)
             }
           break;
+
         case 'stripe':
           const responseStripe = await axios.post(backendUrl+'/api/order/stripe',orderData,{headers:{token}})
 
@@ -76,6 +77,7 @@ const PlaceOrder = () => {
           }
           break;
         default:
+
           break;
       }
       

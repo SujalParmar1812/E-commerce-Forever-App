@@ -131,7 +131,7 @@ const Navbar = () => {
           <NavLink
             onClick={() => setVisible(false)}
             className="py-2 pl-6 hover:text-black"
-            to="/order"
+            to="/orders"
           >
             ORDERS
           </NavLink>
