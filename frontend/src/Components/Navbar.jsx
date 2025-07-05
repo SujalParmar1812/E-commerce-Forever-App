@@ -65,9 +65,11 @@ const Navbar = () => {
           </p>
         </Link>
         <div className="group relative">
-          {" "}
           {
            token && <button onClick={()=>logout()} className="cursor-pointer hover:bg-black py-1 px-2 hover:text-white transition-all duration-300">Logout</button>
+          }
+          {
+           !token && <button onClick={()=>navigate('/login')} className="cursor-pointer hover:bg-black py-1 px-2 hover:text-white transition-all duration-300">Login</button>
           }
 
         </div>
