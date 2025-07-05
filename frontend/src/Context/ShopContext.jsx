@@ -10,8 +10,8 @@ const ShopContextProvider = (props) =>{
     
     const currency ="$";
     const backendUrl =import.meta.env.VITE_BACKEND_URL;
-    const delivery_fee = 10;
 
+    const [deliveryFee, setDeliveryFee] = useState(0);
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [cartItem, setCartItem] = useState({});
@@ -43,6 +43,7 @@ const ShopContextProvider = (props) =>{
             cartData[itemId][size]=1;
         }
         setCartItem(cartData);
+        setDeliveryFee(10);
 
         if(token){
             try {
@@ -62,7 +63,7 @@ const ShopContextProvider = (props) =>{
                         totalCount+=cartItem[items][item];
                     }
                 } catch (error) {
-                    
+                    toast.error(error.message);
                 }
             }
         }
@@ -76,6 +77,9 @@ const ShopContextProvider = (props) =>{
         cartData[itemId][size] = quantity;
 
         setCartItem(cartData);
+        if(quantity===0){
+            setDeliveryFee(0);
+        }
 
         if(token){
             try {
@@ -97,7 +101,7 @@ const ShopContextProvider = (props) =>{
                         total+=itemInfo.price*cartItem[items][item]
                     }
                 } catch (error) {
-                    
+                    toast.error(error.message);
                 }
             }
         }
@@ -152,7 +156,7 @@ const ShopContextProvider = (props) =>{
     }, []); 
 
     const value ={
-        products,currency,delivery_fee,
+        products,currency,deliveryFee,setDeliveryFee,
         search,setSearch,
         showSearch,setShowSearch,
         cartItem,setCartItem,addToCart,getCartCount,updateQuantity,getCartAmount,

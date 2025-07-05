@@ -28,7 +28,7 @@ const About = () => {
             <b> Quality Assurance: </b>
             <p className='text-gray-600'>We ensure the highest standards of quality by using premium fabrics and conducting thorough checks at every stage of production.</p>
           </div>
-          <div className='border-t border-b px-10 md:px-16 sm:py-20 flex flex-col gap-5 '>
+          <div className='border px-10 md:px-16 sm:py-20 flex flex-col gap-5 '>
             <b> Convenience </b>
             <p className='text-gray-600'>Shopping with Forever is simple, seamless, and accessible — from easy navigation to fast, reliable delivery right to your doorstep.</p>
           </div>
