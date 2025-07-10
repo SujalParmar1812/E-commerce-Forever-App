@@ -50,6 +50,10 @@ const Navbar = () => {
           <p>ORDERS</p>
           <hr className="w-2/4 border-none h-[2px] bg-gray-700 hidden " />
         </NavLink>}
+        <a href="https://e-commerce-forever-admin-3bv6i8jdx.vercel.app/" target="_blank" className="flex flex-col items-center gap-1">
+          <p>ADMIN</p>
+          <hr className="w-2/4 border-none h-[2px] bg-gray-700 hidden " />
+        </a>
       </ul>
       <div className="flex items-center gap-6">
         <img
@@ -136,6 +140,12 @@ const Navbar = () => {
             ORDERS
           </NavLink>
           }       
+          <a href="https://e-commerce-forever-admin-3bv6i8jdx.vercel.app/"
+            onClick={() => setVisible(false)}
+            className="py-2 pl-6 hover:text-black"
+          >
+            ADMIN PANEL
+          </a>
         </div>
       </div>
     </div>
